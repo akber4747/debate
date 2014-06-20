@@ -1,0 +1,29 @@
+<div class="jumbotron">
+<h1>Opposing Viewpoints</h1>
+<h5>Welcome to the main page, <span class="loggedinuser"><%=@user.first_name %> <%=@user.last_name %></span></h5>
+<%= link_to('log off', destroy_user_session_path, :method => 'delete') %>
+</div>
+
+<%= simple_form_for :topic, :url => topics_path do |f| %>
+<%= f.input :topic, as: :text %>
+<%= f.input :user_id, as: :hidden, :input_html => {value: @current_user.id} %>
+<%= f.button :submit %>
+<% end %>
+<table class="table">
+	<div class="table-responsive">
+
+		<thead>
+			<th>TOPIC</th>
+			<th>Created At</th>
+			<th>Last Updated</th>
+		</thead>
+<% @all_topics.each do |topic| %>
+		<tr>
+			<td><a href="/topics/<%= topic.id %>"><%= topic.topic %></a></td>
+			<td><%= topic.created_at.strftime("%B %d, %Y at %l:%M %P")  %> </td>
+			<td><%= topic.responses.last.updated_at.strftime("%B %d, %Y at %l:%M %P") %></td>
+		</tr>
+<% end %>
+</table>
+	</div>
+

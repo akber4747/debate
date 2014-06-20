@@ -1,0 +1,14 @@
+<h1>Welcome to the main page, <%=@user.first_name %> <%=@user.last_name %></h1>
+<p>Find me in app/views/wall/index.html.erb</p>
+<%= link_to('log off', destroy_user_session_path, :method => 'delete') %>
+
+
+<%= simple_form_for :topic, :url => topics_path do |f| %>
+<%= f.input :topic, as: :text %>
+<%= f.input :user_id, as: :hidden, :input_html => {value: @current_user.id} %>
+<%= f.button :submit %>
+<% end %>
+
+<% @all_topics.each do |topic| %>
+	<a href="/topics/<%= topic.id %>"><%= topic.topic %></a>
+	<% end %>

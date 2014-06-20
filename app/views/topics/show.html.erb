@@ -1,0 +1,14 @@
+<h1>Topic: <%= @topic.topic %></h1>
+<%= simple_form_for :response, :url => responses_path do |f| %>
+<%= f.input :description, as: :text %>
+<%= f.input :next_steps, as: :text %>
+<%= f.input :topic_id, as: :hidden, :input_html => {value: @topic.id} %>
+<%= f.button :submit %>
+<% end %>
+<h3>Responses</h3>
+<% @topic.responses.each do |response| %>
+<%= response.description %>
+<%= response.next_steps %>
+<% end %>
+
+<a href="<%= topics_path %>">Go back to the Mainpage</a>
