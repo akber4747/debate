@@ -9,3 +9,32 @@ h1{
 .loggedinuser{
 	color: green;
 }
+.response-box{
+	float: left;
+	border: 2px solid red;
+	border-radius: 5px;
+	padding: 10px 5px 10px 5px;
+	min-width: 183px;
+	margin: 15px;
+}
+.response-description{
+	font-weight: bold;
+}
+.response-header{
+	text-align: center;
+	text-decoration: underline;
+
+}
+.response-inputs{
+	margin: 10px;
+}
+.created-at-show{
+	color: green;
+}
+.button{
+	margin-top: 6px;
+	border-radius: 5px;
+	border: none;
+	padding: 8px;
+
+}

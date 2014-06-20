@@ -16,6 +16,7 @@ class ResponsesController < ApplicationController
     if @response.save
       redirect_to topic_path(response_params[:topic_id])
     else
+      flash[:error] = "You gotta keep this under 600 characters! Keep it brief. :)"
       redirect_to topic_path(response_params[:topic_id])
     end
   end
@@ -32,7 +33,7 @@ class ResponsesController < ApplicationController
   private
 
   def response_params
-    params.require(:response).permit(:id, :description, :next_steps, :topic_id, :updated_at)
+    params.require(:response).permit(:id, :description, :next_steps, :topic_id, :updated_at, :user_id)
   end
 
 end

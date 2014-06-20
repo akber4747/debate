@@ -1,14 +1,27 @@
+<div class="page-header">
+
 <h1>Topic: <%= @topic.topic %></h1>
+<h4><a href="<%= topics_path %>">Go back to the Mainpage</a></h4>
+</div>
+<% if flash[:error] %>
+<%= flash[:error] %>
+<% end %>
+
 <%= simple_form_for :response, :url => responses_path do |f| %>
-<%= f.input :description, as: :text %>
-<%= f.input :next_steps, as: :text %>
+<%= f.input :description, as: :text, :input_html => {:max_length => 600}, label: false, placeholder: "Explain the topic's context from your perspective. No more than 600 characters!",  input_html: { class: 'form-control response-inputs' }  %>
+<%= f.input :next_steps, as: :text, label: false,  placeholder: 'So what? Tell us what needs to change. No more than 600 characters!',  input_html: { class: 'form-control response-inputs' }  %>
 <%= f.input :topic_id, as: :hidden, :input_html => {value: @topic.id} %>
-<%= f.button :submit %>
+<%= f.button :submit, input_html: { class: 'btn btn-default' } %>
 <% end %>
 <h3>Responses</h3>
 <% @topic.responses.each do |response| %>
-<%= response.description %>
-<%= response.next_steps %>
+<div class="response-box">
+<p>Created <span class="created-at-show"><%= response.updated_at.strftime("%B %d, %Y at %l:%M %P") %></span> </p>
+<p class="response-header">Context: </p>
+<p class="response-description"><%= response.description %></p>
+<p class="response-header">So? </p>
+<p class="response-next_steps"><%= response.next_steps %></p>
+</div>
 <% end %>
 
-<a href="<%= topics_path %>">Go back to the Mainpage</a>
+<!-- by %= response.user.first_name % error when adding this to line 17 -->

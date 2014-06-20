@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20140619044834) do
+ActiveRecord::Schema.define(version: 20140620033353) do
 
   create_table "responses", force: true do |t|
     t.text     "description"
@@ -19,9 +19,11 @@ ActiveRecord::Schema.define(version: 20140619044834) do
     t.integer  "topic_id"
     t.datetime "created_at"
     t.datetime "updated_at"
+    t.integer  "user_id"
   end
 
   add_index "responses", ["topic_id"], name: "index_responses_on_topic_id"
+  add_index "responses", ["user_id"], name: "index_responses_on_user_id"
 
   create_table "topics", force: true do |t|
     t.string   "topic"

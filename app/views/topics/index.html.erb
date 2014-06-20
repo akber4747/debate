@@ -3,12 +3,14 @@
 <h5>Welcome to the main page, <span class="loggedinuser"><%=@user.first_name %> <%=@user.last_name %></span></h5>
 <%= link_to('log off', destroy_user_session_path, :method => 'delete') %>
 </div>
-
+<div role="form">
 <%= simple_form_for :topic, :url => topics_path do |f| %>
-<%= f.input :topic, as: :text %>
+
+<%= f.input :topic, as: :text, placeholder: 'Add a Topic!', label: false, input_html: { class: 'form-control' }  %>
 <%= f.input :user_id, as: :hidden, :input_html => {value: @current_user.id} %>
-<%= f.button :submit %>
+<%= f.button :submit, 'Submit', input_html: { class: 'btn btn-default' } %>
 <% end %>
+</div>
 <table class="table">
 	<div class="table-responsive">
 
@@ -21,9 +23,11 @@
 		<tr>
 			<td><a href="/topics/<%= topic.id %>"><%= topic.topic %></a></td>
 			<td><%= topic.created_at.strftime("%B %d, %Y at %l:%M %P")  %> </td>
-			<td><%= topic.responses.last.updated_at.strftime("%B %d, %Y at %l:%M %P") %></td>
+			<td><%= topic.responses.last %></td>
 		</tr>
 <% end %>
 </table>
 	</div>
+
+	<!-- when i append .updated_at.strftime("%B %d, %Y at %l:%M %P") to line 24, i get undefined method 'updated_at' error. but sometimes it works... if i remove it, then add a response, then add the text back, then look at index. it works... Maybe if there are no responses it throws the error? -->
 
