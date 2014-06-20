@@ -1,7 +1,7 @@
 <div class="jumbotron">
 <h1>Opposing Viewpoints</h1>
-<h5>Welcome to the main page, <span class="loggedinuser"><%=@user.first_name %> <%=@user.last_name %></span></h5>
-<%= link_to('log off', destroy_user_session_path, :method => 'delete') %>
+<h5>Welcome <span class="loggedinuser"><%=@user.first_name %> <%=@user.last_name %></span>!</h5>
+<%= link_to('Log Out', destroy_user_session_path, :method => 'delete') %>
 </div>
 <div role="form">
 <%= simple_form_for :topic, :url => topics_path do |f| %>
@@ -17,7 +17,7 @@
 		<thead>
 			<th>TOPIC</th>
 			<th>Created At</th>
-			<th>Last Updated</th>
+			<th>Last Response</th>
 		</thead>
 <% @all_topics.each do |topic| %>
 		<tr>

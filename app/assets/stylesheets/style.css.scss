@@ -1,25 +1,41 @@
 
 *{
 	font-family: 'PT Sans', sans-serif;
+	color: white;
 }
 h1{
 		font-weight: bold;
+		color: white;
 
 }
 .loggedinuser{
-	color: green;
+	color: lightblue;
+}
+input{
+	color: black;
+	margin: 10px;
+	background: light-blue;
+	width: 300px;
+}
+text-area{
+	color: black;
+	margin: 10px;
+	background: light-blue;
+	width: 300px;
 }
 .response-box{
 	float: left;
-	border: 2px solid red;
+	border: 2px solid white;
 	border-radius: 5px;
-	padding: 10px 5px 10px 5px;
-	min-width: 183px;
+	padding: 20px 20px 20px 20px;
+	width: 300;
+	max-width: 300px;
+	max-height: 400px;
+	overflow: scroll;
 	margin: 15px;
+	horizontal-align: center;
 }
-.response-description{
-	font-weight: bold;
-}
+
 .response-header{
 	text-align: center;
 	text-decoration: underline;
@@ -27,14 +43,27 @@ h1{
 }
 .response-inputs{
 	margin: 10px;
+	background: light-blue;
+	width: 300px;
 }
 .created-at-show{
 	color: green;
 }
-.button{
+button{
 	margin-top: 6px;
 	border-radius: 5px;
 	border: none;
 	padding: 8px;
+	color: black;
 
+}
+
+body{
+		background: url('space.jpg') no-repeat center center fixed;
+		background-size: cover;
+
+}
+.jumbotron{
+	background: transparent;
+	color: white;
 }

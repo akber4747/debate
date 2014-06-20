@@ -8,10 +8,10 @@
 <% end %>
 
 <%= simple_form_for :response, :url => responses_path do |f| %>
-<%= f.input :description, as: :text, :input_html => {:max_length => 600}, label: false, placeholder: "Explain the topic's context from your perspective. No more than 600 characters!",  input_html: { class: 'form-control response-inputs' }  %>
-<%= f.input :next_steps, as: :text, label: false,  placeholder: 'So what? Tell us what needs to change. No more than 600 characters!',  input_html: { class: 'form-control response-inputs' }  %>
+<%= f.input :description, as: :text, :input_html => {:max_length => 9999}, label: false, placeholder: "Explain the topic's context from your perspective. Try to be brief!",  input_html: { class: 'form-control response-inputs' }  %>
+<%= f.input :next_steps, as: :text, label: false,  placeholder: 'So what? Tell us what needs to change. Try to be brief!',  input_html: { class: 'form-control response-inputs' }  %>
 <%= f.input :topic_id, as: :hidden, :input_html => {value: @topic.id} %>
-<%= f.button :submit, input_html: { class: 'btn btn-default' } %>
+<%= f.button :submit, 'Add Your Response', input_html: { class: 'btn btn-default' } %>
 <% end %>
 <h3>Responses</h3>
 <% @topic.responses.each do |response| %>
